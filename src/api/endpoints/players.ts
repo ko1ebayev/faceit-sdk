@@ -1,8 +1,6 @@
-import { Axios } from "axios";
-import { FaceitAPI } from "./api";
 
-export class PlayersAPI extends FaceitAPI {
-  constructor(readonly httpClient: Axios) {
+export class PlayersAPI extends HttpProvider {
+  constructor(readonly http: HttpClient) {
     super(httpClient);
   }
 
