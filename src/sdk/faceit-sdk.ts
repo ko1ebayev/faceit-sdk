@@ -1,4 +1,5 @@
 import { Axios } from "axios";
+import { PlayersModule } from "../modules/players-module";
 
 interface FaceitSDKConfig {
   readonly apiUrl: string;
@@ -7,7 +8,7 @@ interface FaceitSDKConfig {
 }
 
 export class FaceitSdk {
-  readonly players;
+  readonly players: PlayersModule;
   readonly games;
   readonly championships;
   readonly hubs;
@@ -29,8 +30,10 @@ export class FaceitSdk {
       },
     });
 
-    this.players = new Axios();
+    this.players = new PlayersModule(httpClient);
+
     this.games = new Axios();
+    
     this.championships = new Axios();
     this.hubs = new Axios();
     this.leaderboards = new Axios();
@@ -38,7 +41,6 @@ export class FaceitSdk {
     this.matches = new Axios();
     this.matchmaking = new Axios();
     this.organizers = new Axios();
-    this.players = new Axios();
     this.rankings = new Axios();
     this.search = new Axios();
     this.teams = new Axios();
