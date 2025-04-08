@@ -14,27 +14,39 @@ export class PlayersModule {
     return this.#playerDetailsAPI.getPlayerDetails(player_id);
   }
 
-  async getAllBansOfPlayer(player_id: string, pagination: PaginationParams) {
+  async getAllBansOfPlayer(player_id: string, pagination?: PaginationParams) {
     return this.#playerDetailsAPI.getAllBansOfPlayer(player_id, pagination);
   }
 
-  async getPlayerStatistics(player_id: string, game_id: string) {
-    return this.#playerDetailsAPI.getPlayerStatistics(player_id, game_id);
+  async getPlayerStatistics(
+    player_id: string,
+    game_id: string,
+    pagination?: PaginationParams
+  ) {
+    return this.#playerDetailsAPI.getPlayerStatistics(
+      player_id,
+      game_id,
+      pagination
+    );
   }
 
-  async getPlayerMatches(player_id: string) {
-    return this.#playerDetailsAPI.getPlayerMatches(player_id);
+  async getPlayerMatches(
+    player_id: string,
+    game: string,
+    pagination?: PaginationParams
+  ) {
+    return this.#playerDetailsAPI.getPlayerMatches(player_id, game, pagination);
   }
 
-  async getPlayerHubs(player_id: string) {
-    return this.#playerDetailsAPI.getPlayerHubs(player_id);
+  async getPlayerHubs(player_id: string, pagination?: PaginationParams) {
+    return this.#playerDetailsAPI.getPlayerHubs(player_id, pagination);
   }
 
-  async getPlayerTeams(player_id: string) {
-    return this.#playerDetailsAPI.getPlayerTeams(player_id);
+  async getPlayerTeams(player_id: string, pagination?: PaginationParams) {
+    return this.#playerDetailsAPI.getPlayerTeams(player_id, pagination);
   }
 
-  async getPlayerTournaments(player_id: string) {
-    return this.#playerDetailsAPI.getPlayerTournaments(player_id);
+  async getPlayerTournaments(player_id: string, pagination?: PaginationParams) {
+    return this.#playerDetailsAPI.getPlayerTournaments(player_id, pagination);
   }
 }
