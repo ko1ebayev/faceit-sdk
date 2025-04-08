@@ -1,21 +1,23 @@
 import { Axios } from "axios";
+import { GamesModule } from "../modules/games-module";
+import { MatchesModule } from "../modules/matches-module";
+import { MatchmakingsModule } from "../modules/matchmakings-module";
 import { PlayersModule } from "../modules/players-module";
 
-interface FaceitSDKConfig {
+export interface FaceitSDKConfig {
   readonly apiUrl: string;
   readonly apiKey: string;
-  readonly httpClientConfig: any;
 }
 
 export class FaceitSdk {
   readonly players: PlayersModule;
-  readonly games;
+  readonly games: GamesModule;
+  readonly matches: MatchesModule;
+  readonly matchmaking: MatchmakingsModule;
   readonly championships;
   readonly hubs;
   readonly leaderboards;
   readonly leagues;
-  readonly matches;
-  readonly matchmaking;
   readonly organizers;
   readonly rankings;
   readonly search;
@@ -31,15 +33,14 @@ export class FaceitSdk {
     });
 
     this.players = new PlayersModule(httpClient);
+    this.games = new GamesModule(httpClient);
+    this.matches = new MatchesModule(httpClient);
+    this.matchmaking = new MatchmakingsModule(httpClient);
 
-    this.games = new Axios();
-    
     this.championships = new Axios();
     this.hubs = new Axios();
     this.leaderboards = new Axios();
     this.leagues = new Axios();
-    this.matches = new Axios();
-    this.matchmaking = new Axios();
     this.organizers = new Axios();
     this.rankings = new Axios();
     this.search = new Axios();
