@@ -1,12 +1,13 @@
 import { Axios } from "axios";
+
+import { PaginatedResponse } from "../../types/common/paginated-response";
 import { PaginationParams } from "../../types/common/pagination-params";
-import { PlayerBansDto } from "../../types/dtos/player-bans.dto";
+import { PlayerBanDto } from "../../types/dtos/player-ban.dto";
 import { PlayerDetailsDTO } from "../../types/dtos/player-details.dto";
-import { PlayerHubsDTO } from "../../types/dtos/player-hubs.dto";
-import { PlayerMatchesDTO } from "../../types/dtos/player-matches.dto";
-import { PlayerStatisticsDTO } from "../../types/dtos/player-statistics.dto";
-import { PlayerTeamsDTO } from "../../types/dtos/player-teams.dto";
-import { PlayerTournamentsDTO } from "../../types/dtos/player-tournaments.dto";
+import { PlayerHubDTO } from "../../types/dtos/player-hub.dto";
+import { PlayerMatchDTO } from "../../types/dtos/player-match.dto";
+import { PlayerTeamDTO } from "../../types/dtos/player-team.dto";
+import { PlayerTournamentDTO } from "../../types/dtos/player-tournament.dto";
 import { HttpProvider } from "../http-client";
 
 export class PlayersAPI extends HttpProvider {
@@ -23,20 +24,20 @@ export class PlayersAPI extends HttpProvider {
   async getAllBansOfPlayer(
     player_id: string,
     pagination?: PaginationParams
-  ): Promise<PlayerBansDto> {
+  ): Promise<PaginatedResponse<PlayerBanDto>> {
     return this.http
-      .get<PlayerBansDto>(`/players/${player_id}/bans`, {
+      .get<PaginatedResponse<PlayerBanDto>>(`/players/${player_id}/bans`, {
         params: pagination,
       })
       .then((response) => response.data);
   }
 
-  async getPlayerStatistics<StatisticsItem>(
+  async getPlayerStatistics<S>(
     player_id: string,
     game_id: string,
     pagination?: PaginationParams
   ) {
-    return this.http.get<PlayerStatisticsDTO<StatisticsItem>>(
+    return this.http.get<PaginatedResponse<S>>(
       `/players/${player_id}/games/${game_id}/stats`,
       {
         params: pagination,
@@ -48,9 +49,9 @@ export class PlayersAPI extends HttpProvider {
     player_id: string,
     game: string,
     pagination?: PaginationParams
-  ): Promise<PlayerMatchesDTO> {
+  ): Promise<PaginatedResponse<PlayerMatchDTO>> {
     return this.http
-      .get<PlayerMatchesDTO>(`/players/${player_id}/history`, {
+      .get<PaginatedResponse<PlayerMatchDTO>>(`/players/${player_id}/history`, {
         params: {
           game,
           ...pagination,
@@ -62,9 +63,9 @@ export class PlayersAPI extends HttpProvider {
   async getPlayerHubs(
     player_id: string,
     pagination?: PaginationParams
-  ): Promise<PlayerHubsDTO> {
+  ): Promise<PaginatedResponse<PlayerHubDTO>> {
     return this.http
-      .get<PlayerHubsDTO>(`/players/${player_id}/hubs`, {
+      .get<PaginatedResponse<PlayerHubDTO>>(`/players/${player_id}/hubs`, {
         params: pagination,
       })
       .then((response) => response.data);
@@ -73,9 +74,9 @@ export class PlayersAPI extends HttpProvider {
   async getPlayerTeams(
     player_id: string,
     pagination?: PaginationParams
-  ): Promise<PlayerTeamsDTO> {
+  ): Promise<PaginatedResponse<PlayerTeamDTO>> {
     return this.http
-      .get<PlayerTeamsDTO>(`/players/${player_id}/teams`, {
+      .get<PaginatedResponse<PlayerTeamDTO>>(`/players/${player_id}/teams`, {
         params: pagination,
       })
       .then((response) => response.data);
@@ -84,11 +85,14 @@ export class PlayersAPI extends HttpProvider {
   async getPlayerTournaments(
     player_id: string,
     pagination?: PaginationParams
-  ): Promise<PlayerTournamentsDTO> {
+  ): Promise<PaginatedResponse<PlayerTournamentDTO>> {
     return this.http
-      .get<PlayerTournamentsDTO>(`/players/${player_id}/tournaments`, {
-        params: pagination,
-      })
+      .get<PaginatedResponse<PlayerTournamentDTO>>(
+        `/players/${player_id}/tournaments`,
+        {
+          params: pagination,
+        }
+      )
       .then((response) => response.data);
   }
 }
