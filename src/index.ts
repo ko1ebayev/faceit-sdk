@@ -10,6 +10,8 @@ export { MatchesModule } from './matches';
 export { GamesModule } from './games';
 export { MatchmakingsModule } from './matchmakings';
 export { HubsModule } from './hubs';
+export { ChampionshipsModule } from './championships';
+export { LeaderboardsModule } from './leaderboards';
 
 // SDK factory for full usage
 export { createFaceitSDK, FaceitSDK } from './create-sdk';
@@ -17,3 +19,5 @@ export { createFaceitSDK, FaceitSDK } from './create-sdk';
 // Re-export types for convenience
 export * from './players/types';
 export * from './hubs/types';
+export * from './championships/types';
+export * from './leaderboards/types';

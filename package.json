@@ -28,6 +28,14 @@
     "./hubs": {
       "import": "./dist/hubs/index.js",
       "types": "./dist/hubs/index.d.ts"
+    },
+    "./championships": {
+      "import": "./dist/championships/index.js",
+      "types": "./dist/championships/index.d.ts"
+    },
+    "./leaderboards": {
+      "import": "./dist/leaderboards/index.js",
+      "types": "./dist/leaderboards/index.d.ts"
     }
   },
   "scripts": {

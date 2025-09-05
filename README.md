@@ -66,6 +66,8 @@ const games = await sdk.games.getGames();
 - `games` - Game information and queues
 - `matchmakings` - Matchmaking details
 - `hubs` - Hub details, members, matches, roles, rules, and statistics
+- `championships` - Championship details, matches, results, and subscriptions
+- `leaderboards` - Leaderboard rankings for championships, hubs, and seasons
 
 ## HTTP Client Interface
 
