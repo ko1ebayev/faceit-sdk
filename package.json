@@ -1,16 +1,43 @@
 {
   "name": "faceit-sdk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Tree-shakeable TypeScript SDK for Faceit API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./players": {
+      "import": "./dist/players/index.js",
+      "types": "./dist/players/index.d.ts"
+    },
+    "./matches": {
+      "import": "./dist/matches/index.js",
+      "types": "./dist/matches/index.d.ts"
+    },
+    "./games": {
+      "import": "./dist/games/index.js",
+      "types": "./dist/games/index.d.ts"
+    },
+    "./matchmakings": {
+      "import": "./dist/matchmakings/index.js",
+      "types": "./dist/matchmakings/index.d.ts"
+    },
+    "./hubs": {
+      "import": "./dist/hubs/index.js",
+      "types": "./dist/hubs/index.d.ts"
+    }
+  },
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.8.4",
+  "devDependencies": {
     "typescript": "^5.8.3"
   }
 }

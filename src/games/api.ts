@@ -1,16 +1,14 @@
-import { Axios } from "axios";
-import { PaginationParams } from "../../types/common/pagination-params";
-import { HttpProvider } from "../http-client";
+import { HttpClient } from "../core/http-client.interface";
+import { PaginationParams } from "../core/pagination-params";
 
-export class GamesAPI extends HttpProvider {
-  constructor(readonly http: Axios) {
-    super(http);
-  }
+export class GamesAPI {
+  constructor(private readonly http: HttpClient) {}
 
   async getGames(pagination?: PaginationParams): Promise<any> {
-    return this.http.get("/games", {
+    const response = await this.http.get("/games", {
       params: pagination,
     });
+    return response.data;
   }
 
   async getGameMatchmakings(
@@ -18,20 +16,23 @@ export class GamesAPI extends HttpProvider {
     region: string,
     pagination: PaginationParams
   ): Promise<any> {
-    return this.http.get(`/games/${game_id}/matchmakings`, {
+    const response = await this.http.get(`/games/${game_id}/matchmakings`, {
       params: {
         region,
         ...pagination,
       },
     });
+    return response.data;
   }
 
   async getGameDetails(game_id: string): Promise<any> {
-    return this.http.get(`/games/${game_id}`);
+    const response = await this.http.get(`/games/${game_id}`);
+    return response.data;
   }
 
   async getParentGameDetails(game_id: string): Promise<any> {
-    return this.http.get(`/games/${game_id}/parent`);
+    const response = await this.http.get(`/games/${game_id}/parent`);
+    return response.data;
   }
 
   async getGameQueuesByFilters(
@@ -40,17 +41,19 @@ export class GamesAPI extends HttpProvider {
     entity_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.http.get(`/games/${game_id}/queues`, {
+    const response = await this.http.get(`/games/${game_id}/queues`, {
       params: {
         entity_id,
         entity_type,
         ...pagination,
       },
     });
+    return response.data;
   }
 
   async getGameQueueDetails(game_id: string, queue_id: string): Promise<any> {
-    return this.http.get(`/games/${game_id}/queues/${queue_id}`);
+    const response = await this.http.get(`/games/${game_id}/queues/${queue_id}`);
+    return response.data;
   }
 
   async getGameQueueBans(
@@ -58,9 +61,10 @@ export class GamesAPI extends HttpProvider {
     queue_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.http.get(`/games/${game_id}/queues/${queue_id}/bans`, {
+    const response = await this.http.get(`/games/${game_id}/queues/${queue_id}/bans`, {
       params: pagination,
     });
+    return response.data;
   }
 
   async getGameQueuesByRegion(
@@ -68,8 +72,9 @@ export class GamesAPI extends HttpProvider {
     region_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.http.get(`/games/${game_id}/regions/${region_id}/queues`, {
+    const response = await this.http.get(`/games/${game_id}/regions/${region_id}/queues`, {
       params: pagination,
     });
+    return response.data;
   }
 }

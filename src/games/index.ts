@@ -1,16 +1,16 @@
-import { Axios } from "axios";
-import { GamesAPI } from "../api/endpoints/games";
-import { PaginationParams } from "../types/common/pagination-params";
+import { HttpClient } from "../core/http-client.interface";
+import { PaginationParams } from "../core/pagination-params";
+import { GamesAPI } from "./api";
 
 export class GamesModule {
-  readonly #gamesAPI: GamesAPI;
+  private api: GamesAPI;
 
-  constructor(readonly http: Axios) {
-    this.#gamesAPI = new GamesAPI(http);
+  constructor(httpClient: HttpClient) {
+    this.api = new GamesAPI(httpClient);
   }
 
   async getGames(pagination?: PaginationParams): Promise<any> {
-    return this.#gamesAPI.getGames(pagination);
+    return this.api.getGames(pagination);
   }
 
   async getGameMatchmakings(
@@ -18,15 +18,15 @@ export class GamesModule {
     region: string,
     pagination: PaginationParams
   ): Promise<any> {
-    return this.#gamesAPI.getGameMatchmakings(game_id, region, pagination);
+    return this.api.getGameMatchmakings(game_id, region, pagination);
   }
 
   async getGameDetails(game_id: string): Promise<any> {
-    return this.#gamesAPI.getGameDetails(game_id);
+    return this.api.getGameDetails(game_id);
   }
 
   async getParentGameDetails(game_id: string): Promise<any> {
-    return this.#gamesAPI.getParentGameDetails(game_id);
+    return this.api.getParentGameDetails(game_id);
   }
 
   async getGameQueuesByFilters(
@@ -35,7 +35,7 @@ export class GamesModule {
     entity_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.#gamesAPI.getGameQueuesByFilters(
+    return this.api.getGameQueuesByFilters(
       game_id,
       entity_type,
       entity_id,
@@ -44,7 +44,7 @@ export class GamesModule {
   }
 
   async getGameQueueDetails(game_id: string, queue_id: string): Promise<any> {
-    return this.#gamesAPI.getGameQueueDetails(game_id, queue_id);
+    return this.api.getGameQueueDetails(game_id, queue_id);
   }
 
   async getGameQueueBans(
@@ -52,7 +52,7 @@ export class GamesModule {
     queue_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.#gamesAPI.getGameQueueBans(game_id, queue_id, pagination);
+    return this.api.getGameQueueBans(game_id, queue_id, pagination);
   }
 
   async getGameQueuesByRegion(
@@ -60,6 +60,6 @@ export class GamesModule {
     region_id: string,
     pagination?: PaginationParams
   ): Promise<any> {
-    return this.#gamesAPI.getGameQueuesByRegion(game_id, region_id, pagination);
+    return this.api.getGameQueuesByRegion(game_id, region_id, pagination);
   }
 }
