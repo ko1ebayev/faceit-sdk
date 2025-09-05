@@ -1,5 +1,7 @@
 # Faceit SDK
 
+[![Release](https://github.com/ko1ebayev/faceit-sdk/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ko1ebayev/faceit-sdk/actions/workflows/release.yml)
+
 A tree-shakeable TypeScript SDK for the Faceit Data API v4.
 
 ## Installation
