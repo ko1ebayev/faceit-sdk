@@ -1,0 +1,42 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Config files
+tsconfig.json
+.env
+.env.example
+swagger.json
+
+# Development files
+.github/
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Build files
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Test files
+__tests__/
+*.test.ts
+*.spec.ts
+coverage/
+.nyc_output/

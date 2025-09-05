@@ -64,11 +64,33 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags",
+    "release:patch": "npm version patch",
+    "release:minor": "npm version minor",
+    "release:major": "npm version major",
+    "release:prerelease": "npm version prerelease --preid=beta"
   },
-  "keywords": ["faceit", "sdk", "typescript", "api"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/faceit-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/faceit-sdk/issues"
+  },
+  "homepage": "https://github.com/yourusername/faceit-sdk#readme",
+  "keywords": ["faceit", "sdk", "typescript", "api", "esports", "gaming", "csgo", "cs2"],
   "author": "ko1ebayev.worx@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "devDependencies": {
     "typescript": "^5.8.3"
   }
