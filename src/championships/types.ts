@@ -1,6 +1,8 @@
 // Championship types extracted from swagger.json
 
-import { Game, Organizer } from "../hubs/types";
+import { Game, Organizer, UserSimple as SharedUserSimple, Team as SharedTeam, ChampionshipSimple, ChampionshipsList } from '../shared/types';
+
+export { ChampionshipSimple, ChampionshipsList };
 
 export interface Championship {
   anticheat_required: boolean;
@@ -103,34 +105,14 @@ export interface ChampionshipResultList {
   start: number;
 }
 
-export interface Team {
-  avatar: string;
-  chat_room_id: string;
-  cover_image: string;
-  description: string;
-  facebook: string;
-  faceit_url: string;
-  game: string;
-  leader: string;
-  members: UserSimple[];
-  name: string;
-  nickname: string;
+// Championship-specific Team interface with additional players field
+export interface Team extends SharedTeam {
   players: string[];
-  team_id: string;
-  team_type: string;
-  twitter: string;
-  website: string;
-  youtube: string;
 }
 
-export interface UserSimple {
-  avatar: string;
-  country: string;
-  faceit_url: string;
-  nickname: string;
-  skill_level: number;
+// Championship-specific UserSimple interface with additional fields
+export interface UserSimple extends SharedUserSimple {
   skill_level_label: string;
-  user_id: string;
   verified: boolean;
 }
 
@@ -151,7 +133,7 @@ export interface ChampionshipSubscriptionsList {
   start: number;
 }
 
-export interface ChampionshipsList {
+export interface ChampionshipsListExtended {
   end: number;
   items: Championship[];
   start: number;

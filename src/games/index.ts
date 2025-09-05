@@ -1,6 +1,9 @@
 import { HttpClient } from "../core/http-client.interface";
 import { PaginationParams } from "../core/pagination-params";
 import { GamesAPI } from "./api";
+import { Game, GamesList, Queue, QueuesList, QueueBansList, MatchmakingsList } from "./types";
+
+export * from "./types";
 
 export class GamesModule {
   private api: GamesAPI;
@@ -9,7 +12,7 @@ export class GamesModule {
     this.api = new GamesAPI(httpClient);
   }
 
-  async getGames(pagination?: PaginationParams): Promise<any> {
+  async getGames(pagination?: PaginationParams): Promise<GamesList> {
     return this.api.getGames(pagination);
   }
 
@@ -17,15 +20,15 @@ export class GamesModule {
     game_id: string,
     region: string,
     pagination: PaginationParams
-  ): Promise<any> {
+  ): Promise<MatchmakingsList> {
     return this.api.getGameMatchmakings(game_id, region, pagination);
   }
 
-  async getGameDetails(game_id: string): Promise<any> {
+  async getGameDetails(game_id: string): Promise<Game> {
     return this.api.getGameDetails(game_id);
   }
 
-  async getParentGameDetails(game_id: string): Promise<any> {
+  async getParentGameDetails(game_id: string): Promise<Game> {
     return this.api.getParentGameDetails(game_id);
   }
 
@@ -34,7 +37,7 @@ export class GamesModule {
     entity_type: string,
     entity_id: string,
     pagination?: PaginationParams
-  ): Promise<any> {
+  ): Promise<QueuesList> {
     return this.api.getGameQueuesByFilters(
       game_id,
       entity_type,
@@ -43,7 +46,7 @@ export class GamesModule {
     );
   }
 
-  async getGameQueueDetails(game_id: string, queue_id: string): Promise<any> {
+  async getGameQueueDetails(game_id: string, queue_id: string): Promise<Queue> {
     return this.api.getGameQueueDetails(game_id, queue_id);
   }
 
@@ -51,7 +54,7 @@ export class GamesModule {
     game_id: string,
     queue_id: string,
     pagination?: PaginationParams
-  ): Promise<any> {
+  ): Promise<QueueBansList> {
     return this.api.getGameQueueBans(game_id, queue_id, pagination);
   }
 
@@ -59,7 +62,7 @@ export class GamesModule {
     game_id: string,
     region_id: string,
     pagination?: PaginationParams
-  ): Promise<any> {
+  ): Promise<QueuesList> {
     return this.api.getGameQueuesByRegion(game_id, region_id, pagination);
   }
 }

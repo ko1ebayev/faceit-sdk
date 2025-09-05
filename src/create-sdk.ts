@@ -6,6 +6,12 @@ import { MatchmakingsModule } from "./matchmakings";
 import { HubsModule } from "./hubs";
 import { ChampionshipsModule } from "./championships";
 import { LeaderboardsModule } from "./leaderboards";
+import { LeaguesModule } from "./leagues";
+import { OrganizersModule } from "./organizers";
+import { RankingsModule } from "./rankings";
+import { SearchModule } from "./search";
+import { TeamsModule } from "./teams";
+import { TournamentsModule } from "./tournaments";
 
 export interface FaceitSDK {
   players: PlayersModule;
@@ -15,6 +21,12 @@ export interface FaceitSDK {
   hubs: HubsModule;
   championships: ChampionshipsModule;
   leaderboards: LeaderboardsModule;
+  leagues: LeaguesModule;
+  organizers: OrganizersModule;
+  rankings: RankingsModule;
+  search: SearchModule;
+  teams: TeamsModule;
+  tournaments: TournamentsModule;
 }
 
 /**
@@ -31,5 +43,11 @@ export function createFaceitSDK(httpClient: HttpClient): FaceitSDK {
     hubs: new HubsModule(httpClient),
     championships: new ChampionshipsModule(httpClient),
     leaderboards: new LeaderboardsModule(httpClient),
+    leagues: new LeaguesModule(httpClient),
+    organizers: new OrganizersModule(httpClient),
+    rankings: new RankingsModule(httpClient),
+    search: new SearchModule(httpClient),
+    teams: new TeamsModule(httpClient),
+    tournaments: new TournamentsModule(httpClient),
   };
 }

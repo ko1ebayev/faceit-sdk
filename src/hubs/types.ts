@@ -1,5 +1,15 @@
 // Hub types extracted from swagger.json
 
+import {
+  Game as SharedGame,
+  Organizer as SharedOrganizer,
+  DetailedMatchResult,
+  Faction as SharedFaction,
+  Roster as SharedRoster
+} from '../shared/types';
+
+export { DetailedMatchResult };
+
 export interface Hub {
   avatar: string;
   background_image: string;
@@ -77,37 +87,15 @@ export interface HubStats {
   players: StatsCompetitionPlayer[];
 }
 
+// Hub-specific MatchResult with only Record<string, number> score
 export interface MatchResult {
   score: Record<string, number>;
   winner: string;
 }
 
-export interface DetailedMatchResult {
-  // This is referenced but not fully defined in visible schema
-  // Will need to be expanded if needed
-  [key: string]: any;
-}
-
-export interface Faction {
-  faction_id: string;
-  leader: string;
-  avatar: string;
-  roster: Roster[];
-  substituted: boolean;
-  name: string;
-  type: string;
-}
-
-export interface Roster {
-  anticheat_required: boolean;
-  avatar: string;
-  game_player_id: string;
-  game_player_name: string;
-  game_skill_level: number;
-  membership: string;
-  nickname: string;
-  player_id: string;
-}
+// Hub uses same Faction and Roster as shared
+export type Faction = SharedFaction;
+export type Roster = SharedRoster;
 
 export interface Match {
   best_of: number;
@@ -150,20 +138,9 @@ export interface HubsList {
   start: number;
 }
 
-// Minimal types for referenced entities
-export interface Game {
-  // Minimal game info - extend as needed
-  game_id: string;
-  name?: string;
-  [key: string]: any;
-}
-
-export interface Organizer {
-  // Minimal organizer info - extend as needed
-  organizer_id: string;
-  name?: string;
-  [key: string]: any;
-}
+// Use shared Game and Organizer types
+export type Game = SharedGame;
+export type Organizer = SharedOrganizer;
 
 // Request parameter types
 export type HubMatchType = 'all' | 'upcoming' | 'ongoing' | 'past';

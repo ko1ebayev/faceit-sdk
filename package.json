@@ -1,7 +1,7 @@
 {
   "name": "faceit-sdk",
   "version": "1.0.0",
-  "description": "Tree-shakeable TypeScript SDK for Faceit API",
+  "description": "TypeScript SDK for Faceit API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -36,14 +36,38 @@
     "./leaderboards": {
       "import": "./dist/leaderboards/index.js",
       "types": "./dist/leaderboards/index.d.ts"
+    },
+    "./leagues": {
+      "import": "./dist/leagues/index.js",
+      "types": "./dist/leagues/index.d.ts"
+    },
+    "./organizers": {
+      "import": "./dist/organizers/index.js",
+      "types": "./dist/organizers/index.d.ts"
+    },
+    "./rankings": {
+      "import": "./dist/rankings/index.js",
+      "types": "./dist/rankings/index.d.ts"
+    },
+    "./search": {
+      "import": "./dist/search/index.js",
+      "types": "./dist/search/index.d.ts"
+    },
+    "./teams": {
+      "import": "./dist/teams/index.js",
+      "types": "./dist/teams/index.d.ts"
+    },
+    "./tournaments": {
+      "import": "./dist/tournaments/index.js",
+      "types": "./dist/tournaments/index.d.ts"
     }
   },
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["faceit", "sdk", "typescript", "api"],
+  "author": "ko1ebayev.worx@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.8.3"

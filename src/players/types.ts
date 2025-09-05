@@ -1,4 +1,5 @@
 import { Nullable } from "../core/nullable";
+import { Roster } from "../shared/types";
 
 export interface PlayerDetailsDTO {
   activated_at: string;
@@ -74,7 +75,7 @@ export interface PlayerMatchDTO {
     faction_id: string;
     leader: string;
     avatar: string;
-    roster: Array<any>;
+    roster: Array<Roster>;
     substituted: boolean;
     name: string;
     type: string;
@@ -83,7 +84,7 @@ export interface PlayerMatchDTO {
     faction_id: string;
     leader: string;
     avatar: string;
-    roster: Array<any>;
+    roster: Array<Roster>;
     substituted: boolean;
     name: string;
     type: string;
