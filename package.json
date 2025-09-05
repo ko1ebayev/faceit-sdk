@@ -1,6 +1,6 @@
 {
   "name": "faceit-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript SDK for Faceit API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -83,7 +83,16 @@
     "url": "https://github.com/yourusername/faceit-sdk/issues"
   },
   "homepage": "https://github.com/yourusername/faceit-sdk#readme",
-  "keywords": ["faceit", "sdk", "typescript", "api", "esports", "gaming", "csgo", "cs2"],
+  "keywords": [
+    "faceit",
+    "sdk",
+    "typescript",
+    "api",
+    "esports",
+    "gaming",
+    "csgo",
+    "cs2"
+  ],
   "author": "ko1ebayev.worx@gmail.com",
   "license": "MIT",
   "files": [
